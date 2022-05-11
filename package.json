@@ -1,0 +1,32 @@
+{
+  "name": "yaf-cli",
+  "version": "1.0.0",
+  "description": "Yaf-cli is a full system for rapid yaf development",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "yaf-cli": "./bin/index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/505402896/yaf-cli.git"
+  },
+  "keywords": [
+    "yaf",
+    "cli"
+  ],
+  "author": "yuuki",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/505402896/yaf-cli/issues"
+  },
+  "homepage": "https://github.com/505402896/yaf-cli#readme",
+  "dependencies": {
+    "chalk": "^5.0.1",
+    "commander": "^9.2.0",
+    "download-git-repo": "^3.0.2",
+    "inquirer": "^8.2.4"
+  }
+}
