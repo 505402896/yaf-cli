@@ -1,0 +1,7 @@
+{
+  "editor.fontLigatures": false,
+  "editor.fontLigatures": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true
+  }
+}

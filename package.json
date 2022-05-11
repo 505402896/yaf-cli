@@ -4,10 +4,13 @@
   "description": "Yaf-cli is a full system for rapid yaf development",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "ts-node-dev --respawn --transpile-only src/main.ts",
+    "eslint:comment": "使用 ESLint 检查并自动修复 src 目录下所有扩展名为 .ts 的文件",
+    "eslint": "eslint --fix src --ext .ts --max-warnings=0"
   },
   "bin": {
-    "yaf-cli": "./bin/index.js"
+    "yaf-cli": "./bin/index.ts"
   },
   "repository": {
     "type": "git",
@@ -27,6 +30,15 @@
     "chalk": "^5.0.1",
     "commander": "^9.2.0",
     "download-git-repo": "^3.0.2",
-    "inquirer": "^8.2.4"
+    "inquirer": "^8.2.4",
+    "typescript": "^4.6.4"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.32",
+    "@typescript-eslint/eslint-plugin": "^5.23.0",
+    "@typescript-eslint/parser": "^5.23.0",
+    "eslint": "^8.15.0",
+    "prettier": "^2.6.2",
+    "ts-node-dev": "^1.1.8"
   }
 }
