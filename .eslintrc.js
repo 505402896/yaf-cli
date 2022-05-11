@@ -2,6 +2,7 @@ module.exports = {
   'env': {
     'es2021': true,
     'node': true,
+    'commonjs': true,
   },
   'extends': [
     'eslint:recommended',
@@ -18,5 +19,6 @@ module.exports = {
   'rules': {
     quotes: ['error', 'single'],
     semi: ['error', 'never'],
+    '@typescript-eslint/no-var-requires': 'off'
   }
 }

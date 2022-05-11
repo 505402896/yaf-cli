@@ -10,7 +10,7 @@
     "eslint": "eslint --fix src --ext .ts --max-warnings=0"
   },
   "bin": {
-    "yaf-cli": "./bin/index.ts"
+    "yaf-cli": "ts-node-dev --respawn --transpile-only ./bin/index.ts"
   },
   "repository": {
     "type": "git",
@@ -27,10 +27,12 @@
   },
   "homepage": "https://github.com/505402896/yaf-cli#readme",
   "dependencies": {
+    "axios": "^0.27.2",
     "chalk": "^5.0.1",
     "commander": "^9.2.0",
     "download-git-repo": "^3.0.2",
     "inquirer": "^8.2.4",
+    "ora": "^6.1.0",
     "typescript": "^4.6.4"
   },
   "devDependencies": {
@@ -40,5 +42,6 @@
     "eslint": "^8.15.0",
     "prettier": "^2.6.2",
     "ts-node-dev": "^1.1.8"
-  }
+  },
+  "type": "module"
 }
