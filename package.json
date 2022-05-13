@@ -5,12 +5,13 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "ts-node-dev --respawn --transpile-only src/main.ts",
+    "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
     "eslint:comment": "使用 ESLint 检查并自动修复 src 目录下所有扩展名为 .ts 的文件",
-    "eslint": "eslint --fix src --ext .ts --max-warnings=0"
+    "eslint": "eslint --fix src --ext .ts --max-warnings=0",
+    "build": "npm run eslint && rimraf lib && tsc --build"
   },
   "bin": {
-    "yaf-cli": "ts-node-dev --respawn --transpile-only ./bin/index.ts"
+    "yaf-cli": "./bin/index.js"
   },
   "repository": {
     "type": "git",
@@ -33,6 +34,7 @@
     "download-git-repo": "^3.0.2",
     "inquirer": "^8.2.4",
     "ora": "^6.1.0",
+    "rimraf": "^3.0.2",
     "typescript": "^4.6.4"
   },
   "devDependencies": {
@@ -42,6 +44,5 @@
     "eslint": "^8.15.0",
     "prettier": "^2.6.2",
     "ts-node-dev": "^1.1.8"
-  },
-  "type": "module"
+  }
 }
