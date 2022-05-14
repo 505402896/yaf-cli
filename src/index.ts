@@ -12,10 +12,10 @@ program
 program
   .command('create <app-name>')
   .alias('c')
-  .description('Create new yaf project')
-  .action(async (name) => {
+  .description('create new yaf project')
+  .action(async (projectName: string) => {
     // TODO: 改成name: string 后报错
-    await create(name)
+    await create(projectName)
   })
 
 // program.on('--help', () => {})

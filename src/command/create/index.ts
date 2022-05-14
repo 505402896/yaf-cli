@@ -1,29 +1,65 @@
-import axios from 'axios'
+// import axios from 'axios'
 import inquirer from 'inquirer'
-
-const fetchRepos = async () => {
-  const { data } = await axios.get('https://api.github.com/orgs/zhu-cli/repos')
-  return data
-}
+import { templateList, featureList } from '../../constance'
+import { isDirExist } from '../../utils/create'
 
 export default async function create (projectName: string) :Promise<void> {
-  // const ora = require('ora')
-  // const spinner = ora('fetch template list ...')
-  // spinner.start()
-  try {
-    const res = await fetchRepos()
-    const templateNames = res.map((v) => v.name)
-    // spinner.succeed()
-    const { repo } = await inquirer.prompt({
-      name: 'repo', // 获取选择后的结果
-      type: 'list', 
-      message: 'please choise a template to create yaf project',
-      choices: templateNames
-    })
-    console.log(repo)
-    console.log(projectName)
-    
-  } catch (error) {
-    console.log(error)
-  }
+  // check directory is exist
+  isDirExist(projectName)
+
+  // fetch templates in github
+  // const templates = await fetchTemplate()
+
+  // select base template
+  const template = await selectBaseTemplate()
+  console.log(template)
+
+  const features = await selectFeatures()
+  console.log(features)
+  
 }
+
+/**
+ * @description 获取选择的框架模板类型
+ * @returns {String} template name
+ */
+async function selectBaseTemplate() :Promise<string> {
+  const { template } = await inquirer.prompt({
+    name: 'template', // 获取选择后的结果
+    type: 'list', 
+    message: 'please choise a template to create project',
+    choices: templateList
+  })
+  return template
+}
+
+/**
+ * @description 获取选择的功能模块
+ * @returns {Array} features
+ */
+async function selectFeatures(): Promise<Array<string>> {
+  const { features } = await inquirer.prompt({
+    name: 'features',
+    type: 'checkbox', 
+    message: 'please choise some features in your project',
+    choices: featureList
+  })
+  return features
+}
+
+/**
+ * @description 获取github中的所有模板
+ * @returns templates array
+ */
+// async function fetchTemplate() {
+//   const ora = require('ora')
+//   const spinner = ora('fetch template list ...')
+//   spinner.start()
+//   try {
+//     const { data } = await axios.get(reposUrl)
+//     const templateNames = data.map((v) => v.name)
+//     spinner.succeed()
+//   } catch (error) {
+//     console.log(error)
+//   }
+// }
