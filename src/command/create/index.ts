@@ -14,7 +14,7 @@ export default async function create (projectName: string) :Promise<void> {
   const template = await selectBaseTemplate()
   console.log(template)
 
-  const features = await selectFeatures()
+  const features = await selectFeatures(template)
   console.log(features)
   
 }
@@ -37,12 +37,12 @@ async function selectBaseTemplate() :Promise<string> {
  * @description 获取选择的功能模块
  * @returns {Array} features
  */
-async function selectFeatures(): Promise<Array<string>> {
+async function selectFeatures(baseTemplate: string): Promise<Array<string>> {
   const { features } = await inquirer.prompt({
     name: 'features',
     type: 'checkbox', 
     message: 'please choise some features in your project',
-    choices: featureList
+    choices: featureList[baseTemplate]
   })
   return features
 }
